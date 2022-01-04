@@ -9,7 +9,9 @@ Day 3 assignment for the subject Fundamentals in Frontend Development in PowerX 
 ## Status 
 
 - [x] Deployed into Netlify
-- [ ] styleguidist
+- [x] styleguidist
 
 App link: [https://powerx-movies.netlify.app/](https://powerx-movies.netlify.app/)
+
+Styleguide: [https://powerx-movies-styleguidist.netlify.app/](https://powerx-movies-styleguidist.netlify.app/)
 

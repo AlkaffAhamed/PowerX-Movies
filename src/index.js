@@ -25,19 +25,19 @@ ReactDOM.render(
       <AuthProvider>
         <AppShell>
           <Switch>
-            <Route path="/register">
-              <RegisterPage />
+            <Route path="/register" component={RegisterPage}>
+              {/* <RegisterPage /> */}
             </Route>
-            <Route path="/login">
-              <LoginPage />
+            <Route path="/login" component={LoginPage}>
+              {/* <LoginPage /> */}
             </Route>
-            <Route path='/movie/:mid'>
-              <Movie />
+            <Route path='/movie/:mid' component={Movie}>
+              {/* <Movie /> */}
             </Route>
-            <Route path="/" exact>
-              <AllMovies />
+            <Route path="/" exact component={AllMovies}>
+              {/* <AllMovies /> */}
             </Route>
-            <Route path="*">
+            <Route path="*" component={PageNotFound}>
               <PageNotFound />
             </Route>
           </Switch>

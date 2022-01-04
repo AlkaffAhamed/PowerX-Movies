@@ -3,7 +3,6 @@ import { Button } from "components/button";
 import { TextareaField } from 'components/textarea-field';
 import { SelectField } from 'components/select-field';
 import { useCreateCommentMutation } from "domains/movie/hooks/use-comment"
-import { number } from 'yup';
 
 export const CommentForm = ({mid}) => 
 {

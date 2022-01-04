@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useParams } from "react-router-dom";
 import { useMovie } from 'domains/movie/hooks/use-movie';
-import { useGetComments } from 'domains/movie/hooks/use-comment';
+import { useGetComments, useGetCurrentUser } from 'domains/movie/hooks/use-comment';
 // import { Comment } from 'domains/movie/components/comment';
 // import { CommentForm } from 'domains/movie/components/comment-form';
 import { useAuth } from 'domains/auth/auth.state';
@@ -13,7 +13,7 @@ export const Movie = () =>
   const { mid } = useParams();
   const { data: movieData, status: movieStatus } = useMovie(mid);
   const { data: commentsData, status: commentsStatus } = useGetComments(mid);
-  const { status, uid } = useAuth();
+  
 
   return(
     <>
@@ -38,8 +38,6 @@ export const Movie = () =>
             commentsData && commentsData.map(comment =>
               <CommentCard data={comment} key={comment._id} />
             )}
-
-
 
             <div className="py-2">
               <CommentForm mid={mid} />

@@ -10,7 +10,7 @@ export const LoginForm = () => {
   const login = useLogin();
 
   return (
-    <div className="max-w-md mx-auto m-6 shadow">
+    <div className="w-full mx-auto m-6 shadow">
       <form
         onSubmit={(ev) => {
           ev.preventDefault();
