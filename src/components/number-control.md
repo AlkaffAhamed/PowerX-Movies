@@ -1,0 +1,5 @@
+NumberControl Example: 
+
+```jsx
+<NumberControl />
+```
