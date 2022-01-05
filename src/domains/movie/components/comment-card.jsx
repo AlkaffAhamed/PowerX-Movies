@@ -6,25 +6,31 @@ import { useState } from "react"
 export const CommentCard = (props) => 
 {
   const { mutate } = useDeleteCommentMutation()
-  const { data: uid, status: uidStatus, error: err } = useGetCurrentUser()
-  const { status, setStatus } = useState("")
+  // const { data: uid, status: uidStatus, error: err } = useGetCurrentUser()
+  // const { status, setStatus } = useState("")
 
   // uid && console.log(`uid ${uid} ${uidStatus} | props ${props.data.userId}`)
   // uid && console.log(uid.userId)
   // uid && console.log(uid)
 
-  function handleDeleteComment()
-  {
-    setStatus("loading")
-    mutate({commentId: props._id}, 
-    {onSuccess: () => 
-    {
-      setStatus("idle")
-    },
-    onError: () => setStatus("error")})
-  }
+  // function handleDeleteComment()
+  // {
+  //   setStatus("loading")
+  //   mutate({commentId: props._id}, 
+  //   {onSuccess: () => 
+  //   {
+  //     setStatus("idle")
+  //   },
+  //   onError: () => setStatus("error")})
+  // }
 
   const data = props.data
+  const cid = data._id
+
+  console.log("data")
+  console.log(data)
+  console.log(`cid: ${cid}`)
+
   return (
     <div className="bg-white rounded-lg p-2 m-4 border-2">
       <div className="flex flex-row">
@@ -39,15 +45,13 @@ export const CommentCard = (props) =>
         {data.content}
       </div>
       <div>
-        {(uidStatus === "success") 
-          ? (uid.userId === props.data.userId) && 
+        {props.isDelete && 
             <Button 
             variant="primary"
-            onclick={() => handleDeleteComment()}
+            onClick={() => mutate(cid)}
             >
               Delete
             </Button>
-          :""
         }
       </div>
     </div>

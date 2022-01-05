@@ -38,9 +38,9 @@ export const useDeleteComment = () =>
 {
   const { accessToken } = useAuth();
   
-  return function invokeDelete({commentId}) 
+  return function invokeDelete(commentId) 
   {
-    return deleteComment({commentId}, {token: accessToken});
+    return deleteComment(commentId, {token: accessToken});
   }
 }
 

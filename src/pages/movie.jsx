@@ -6,14 +6,20 @@ import { useGetComments, useGetCurrentUser } from 'domains/movie/hooks/use-comme
 // import { CommentForm } from 'domains/movie/components/comment-form';
 import { useAuth } from 'domains/auth/auth.state';
 import { CommentCard } from 'domains/movie/components/comment-card';
-import { CommentForm } from "domains/movie/components/comment-form"
+import { CommentForm } from "domains/movie/components/comment-form";
+import { useState } from "react";
 
 export const Movie = () => 
 {
   const { mid } = useParams();
   const { data: movieData, status: movieStatus } = useMovie(mid);
   const { data: commentsData, status: commentsStatus } = useGetComments(mid);
-  
+  const { data: uid, status: uidStatus, error: err } = useGetCurrentUser()
+  const { status, setStatus } = useState("")
+
+  // uid && console.log(`uid ${uid} ${uidStatus} | props ${props.data.userId}`)
+  // uid && console.log(uid.userId)
+  // uid && console.log(uid)
 
   return(
     <>
@@ -36,7 +42,7 @@ export const Movie = () =>
             {commentsStatus !== 'success' && (<div className='text-center'><h1>Loading comments...</h1></div>)}
             {//commentsData && commentsData.length === 0 ? <div className='text-center'>No Comments</div> : commentsData.map((comment) => 
             commentsData && commentsData.map(comment =>
-              <CommentCard data={comment} key={comment._id} />
+              <CommentCard data={comment} key={comment._id} isDelete={uidStatus === "success" ? (comment.userId === uid.userId) : false} />
             )}
 
             <div className="py-2">
